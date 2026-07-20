@@ -3,289 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Elena Marsh — Therapy for Anxious High-Achievers | Portland, OR</title>
-<meta name="description" content="Licensed therapist helping anxious high-achievers find calm without losing their edge. Portland & online across Oregon.">
+<title>Elena Marsh — A letter, not a landing page</title>
+<meta name="description" content="Licensed therapist for anxious high-achievers. Portland, OR and online.">
 <style>
   :root{
-    --ink:#2b2620; --body:#4f473c; --muted:#8a8072;
-    --s1:#faf7f0; --s2:#f1ece0; --s3:#e9e0cd; --s4:#dfd3b8;
-    --line-color:#9a8a6a; --accent:#a8623f;
-    --serif:'Fraunces', Georgia, serif; --sans:'Inter', -apple-system, sans-serif;
+    --ink:#2b2620; --body:#4a4438; --muted:#948a76; --paper:#faf6ee;
+    --rule:#d8cfb8; --accent:#9c5b3c;
+    --serif:'Lora', Georgia, serif; --hand:'Caveat', cursive; --sans:'Inter', sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);color:var(--body);background:var(--s1);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background 1.2s ease}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);font-size:19px;line-height:1.85;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .page{max-width:600px;margin:0 auto;padding:100px 28px 140px}
 
-  nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
-  .nav-inner{display:flex;justify-content:space-between;align-items:center;height:74px}
-  .logo{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--ink)}
-  .nav-links{display:flex;gap:30px;align-items:center;font-size:14.5px}
-  .btn{background:var(--accent);color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14.5px;transition:transform .25s,box-shadow .25s}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(168,98,63,.3)}
+  .letterhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:80px;font-family:var(--sans);font-size:12.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+  .letterhead b{font-family:var(--serif);font-size:17px;color:var(--ink);text-transform:none;letter-spacing:0}
 
-  /* BREATHING LINE — an SVG path that slowly pulses, standing in for "breath" without being a gimmick */
-  .breath-line{width:100%;height:60px;display:block}
-  .breath-line path{fill:none;stroke:var(--line-color);stroke-width:1.4;opacity:.55}
-  .breath-line .b1{animation:breathe 7s ease-in-out infinite}
-  @keyframes breathe{0%,100%{stroke-width:1;opacity:.35}50%{stroke-width:2;opacity:.7}}
+  .date{font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:48px}
+  .salutation{font-size:22px;color:var(--ink);margin-bottom:36px}
 
-  /* WAVY DIVIDER between sections — organic, not a hard line */
-  .divider{width:100%;height:44px;display:block;margin-top:-1px}
+  p{margin-bottom:28px}
+  p.emphasis{font-style:italic;color:var(--ink)}
 
-  section{padding:100px 0}
-  .hero{padding-top:80px;padding-bottom:0}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;padding-bottom:60px}
-  .eyebrow{font-size:13px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-  h1{font-family:var(--serif);font-size:clamp(38px,5vw,56px);font-weight:500;line-height:1.14;color:var(--ink);letter-spacing:-.4px;margin-bottom:22px}
-  .lead{font-size:18.5px;max-width:480px;margin-bottom:32px}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .btn-ghost{border:1.5px solid rgba(43,38,32,.2);padding:11px 22px;border-radius:8px;font-size:14.5px;font-weight:600;color:var(--ink);transition:border-color .2s,background .2s}
-  .btn-ghost:hover{border-color:var(--ink);background:rgba(0,0,0,.03)}
-
-  /* LINE-ART ILLUSTRATION instead of gradient blob photo — hand-drawn feel via stroke animation */
-  .line-art{width:100%;aspect-ratio:1/1.05}
-  .line-art path{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .line-art .fill{fill:var(--s3);stroke:none}
-  .line-art .accent-fill{fill:var(--accent);opacity:.85;stroke:none}
-  .draw{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.4s cubic-bezier(.16,1,.3,1)}
-  .draw.drawn{stroke-dashoffset:0}
-
-  h2{font-family:var(--serif);font-size:clamp(30px,3.6vw,42px);font-weight:500;color:var(--ink);line-height:1.2;letter-spacing:-.3px;margin-bottom:16px}
-  .sec-head{max-width:600px;margin-bottom:56px}
-
-  .fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .fade{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s ease}
   .fade.in{opacity:1;transform:translateY(0)}
 
-  /* SPECIALTIES — asymmetric, staggered fade */
-  .specialty-list{display:flex;flex-direction:column}
-  .specialty{display:grid;grid-template-columns:100px 1fr;gap:32px;padding:34px 0;border-top:1px solid rgba(43,38,32,.1);align-items:start}
-  .specialty:last-child{border-bottom:1px solid rgba(43,38,32,.1)}
-  .specialty .mark{width:56px;height:56px}
-  .specialty .mark svg{width:100%;height:100%}
-  .specialty h3{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--ink);margin-bottom:8px}
-  .specialty p{font-size:15.5px;max-width:520px}
+  .rule{border:none;border-top:1px solid var(--rule);margin:56px 0}
 
-  /* PROCESS — vertical breathing line connecting steps */
-  .process-wrap{position:relative}
-  .process-track{position:absolute;left:27px;top:14px;bottom:14px;width:1.5px;background:linear-gradient(180deg,var(--line-color),transparent)}
-  .process-step{display:grid;grid-template-columns:56px 1fr;gap:28px;padding-bottom:52px;position:relative}
-  .process-step:last-child{padding-bottom:0}
-  .step-dot{width:56px;height:56px;border-radius:50%;background:var(--s1);border:1.5px solid var(--line-color);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:19px;color:var(--ink);position:relative;z-index:1}
-  .process-step h4{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:6px}
-  .process-step p{font-size:15px;max-width:460px}
+  .practicalities{font-family:var(--sans);font-size:15px;color:var(--body);background:#f2ecdd;padding:28px 30px;border-left:2px solid var(--accent);margin:48px 0}
+  .practicalities .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
+  .practicalities dl{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:14.5px}
+  .practicalities dt{color:var(--muted)}
+  .practicalities dd{color:var(--ink)}
 
-  /* QUOTE */
-  .quote-section{text-align:center}
-  .quote-section blockquote{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:400;font-style:italic;line-height:1.4;color:var(--ink);max-width:760px;margin:0 auto 24px}
-  .quote-section cite{font-style:normal;font-size:14px;color:var(--muted);font-weight:500}
+  .signoff{margin-top:56px}
+  .sig{font-family:var(--hand);font-size:44px;color:var(--ink);margin:14px 0 6px;display:block}
+  .credential{font-family:var(--sans);font-size:12.5px;color:var(--muted);letter-spacing:.3px}
 
-  /* FEES */
-  .fee-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .fee-card{background:var(--s1);border:1px solid rgba(43,38,32,.12);border-radius:16px;padding:32px 28px;transition:transform .3s,box-shadow .3s}
-  .fee-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(43,38,32,.08)}
-  .fee-card.featured{border-color:var(--accent);border-width:1.5px}
-  .fee-card h3{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px}
-  .fee-price{font-family:var(--serif);font-size:36px;font-weight:500;color:var(--ink)}
-  .fee-price span{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400}
-  .fee-desc{font-size:14px;margin:12px 0 20px}
-  .fee-list{list-style:none}
-  .fee-list li{font-size:13.5px;padding:6px 0;padding-left:20px;position:relative}
-  .fee-list li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ps{font-family:var(--hand);font-size:24px;color:var(--accent);margin-top:64px;max-width:440px;line-height:1.4}
 
-  /* FAQ */
-  details{border-top:1px solid rgba(43,38,32,.1);padding:20px 0}
-  details:last-child{border-bottom:1px solid rgba(43,38,32,.1)}
-  details summary{font-size:16.5px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
-  details summary::after{content:"";width:9px;height:9px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(45deg);transition:transform .3s;margin-top:-4px}
-  details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
-  details p{font-size:14.5px;padding-top:14px;max-width:640px}
+  .contact-strip{margin-top:100px;padding-top:32px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:14px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .contact-strip a{font-weight:600}
 
-  .cta-section{border-radius:28px;padding:72px 56px;text-align:center;background:var(--ink);color:var(--s1)}
-  .cta-section h2{color:var(--s1)}
-  .cta-section p{font-size:16.5px;opacity:.75;max-width:480px;margin:0 auto 30px}
-  .cta-section .btn{background:var(--accent)}
-  .cta-section small{display:block;margin-top:16px;font-size:12.5px;opacity:.55}
+  .book-btn{display:inline-block;font-family:var(--sans);font-size:14px;font-weight:600;color:#fff;background:var(--accent);padding:14px 28px;border-radius:2px;margin-top:8px}
 
-  footer{padding:50px 0 36px;font-size:13px;color:var(--muted)}
-  .foot-grid{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:32px}
-  .foot-col h5{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-  .foot-col a,.foot-col p{display:block;font-size:14px;color:var(--body);padding:3px 0}
-  .legal{border-top:1px solid rgba(43,38,32,.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .crisis{max-width:600px;margin:0 auto;padding:0 28px 60px;font-family:var(--sans);font-size:12.5px;color:var(--muted);text-align:center}
 
-  @media(max-width:860px){
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .fee-grid{grid-template-columns:1fr}
-    .nav-links a:not(.btn){display:none}
-    section{padding:64px 0}
-    .cta-section{padding:52px 28px}
-    .specialty{grid-template-columns:1fr;gap:14px}
+  @media(max-width:640px){
+    .page{padding:64px 22px 100px}
+    body{font-size:17px}
+    .salutation{font-size:19px}
   }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Caveat:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav>
-  <div class="wrap nav-inner">
-    <a class="logo" href="#">Elena Marsh, LPC</a>
-    <div class="nav-links">
-      <a href="#specialties">Specialties</a>
-      <a href="#process">Approach</a>
-      <a href="#fees">Fees</a>
-      <a class="btn" href="#book">Book a free consult</a>
-    </div>
-  </div>
-</nav>
+<div class="page">
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Therapy for anxious high-achievers</p>
-      <h1>You're holding it all together. It's exhausting.</h1>
-      <p class="lead">From the outside, your life works. Inside, the pressure never switches off. I help driven people quiet the noise — without losing the edge that got them here.</p>
-      <div class="hero-ctas">
-        <a class="btn" href="#book">Book a free 15-min consult</a>
-        <a class="btn-ghost" href="#process">How I work</a>
-      </div>
-    </div>
-    <svg class="line-art" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
-      <circle class="fill" cx="200" cy="150" r="118"/>
-      <path class="draw" id="face1" d="M140 130 Q 140 70 200 68 Q 262 70 262 130 L 262 190 Q 262 250 200 252 Q 140 250 140 190 Z"/>
-      <path class="draw" id="face2" d="M170 150 Q 180 142 190 150" />
-      <path class="draw" id="face3" d="M212 150 Q 222 142 232 150" />
-      <path class="draw" id="face4" d="M180 195 Q 200 210 222 195" />
-      <path class="accent-fill draw" id="leaf1" d="M62 300 Q 90 250 140 260 Q 130 310 80 320 Q 60 314 62 300 Z"/>
-      <path class="draw" id="leaf1-vein" d="M75 305 Q 100 285 128 270"/>
-      <path class="draw" id="stem" d="M200 252 Q 200 300 200 340"/>
-      <path class="draw" id="branchL" d="M200 290 Q 160 280 130 300"/>
-      <path class="draw" id="branchR" d="M200 300 Q 245 285 280 305"/>
-    </svg>
+  <div class="letterhead">
+    <b>Elena Marsh</b>
+    <span>Portland, OR · Telehealth across Oregon</span>
   </div>
-  <svg class="divider" viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0 22 Q 300 0 600 22 T 1200 22 V 44 H 0 Z" fill="var(--s2)"/></svg>
-</header>
 
-<section style="background:var(--s2)" id="specialties">
-  <div class="wrap">
-    <div class="sec-head fade">
-      <h2>What we can work on together</h2>
-      <p style="font-size:17px">Three areas where I've spent over a decade going deep.</p>
-    </div>
-    <div class="specialty-list">
-      <div class="specialty fade">
-        <div class="mark"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="var(--accent)" stroke-width="1.4"/><path d="M16 30 Q 22 20 28 30 T 40 30" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <div><h3>Anxiety & overthinking</h3><p>The 3am spiral, the rehearsed conversations, the constant scanning for what could go wrong. We'll change your relationship to the noise, not just try to silence it.</p></div>
-      </div>
-      <div class="specialty fade">
-        <div class="mark"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="var(--accent)" stroke-width="1.4"/><path d="M28 14 L28 28 L38 34" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <div><h3>Burnout & perfectionism</h3><p>When "good enough" has never felt like enough. We'll find where the pressure actually comes from and build a pace you can sustain.</p></div>
-      </div>
-      <div class="specialty fade">
-        <div class="mark"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="var(--accent)" stroke-width="1.4"/><path d="M18 28 L 38 28 M 30 20 L 38 28 L 30 36" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><h3>Life transitions</h3><p>New role, new chapter, or the quiet realization the life you built isn't the one you want. You don't have to navigate change alone.</p></div>
-      </div>
-    </div>
-  </div>
-  <svg class="divider" viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0 22 Q 300 44 600 22 T 1200 22 V 44 H 0 Z" fill="var(--s1)"/></svg>
-</section>
+  <p class="date">Written for you, whenever you're reading this</p>
 
-<section id="process">
-  <div class="wrap">
-    <div class="sec-head fade">
-      <h2>What working together looks like</h2>
-      <p style="font-size:17px">No couch clichés. Structured, warm, and honest.</p>
-    </div>
-    <div class="process-wrap">
-      <div class="process-track"></div>
-      <div class="process-step fade"><div class="step-dot">01</div><div><h4>Free 15-minute consult</h4><p>A short call to see if we're a fit — you tell me what's going on, I tell you honestly whether I'm the right person to help.</p></div></div>
-      <div class="process-step fade"><div class="step-dot">02</div><div><h4>Mapping the territory</h4><p>We get specific about what's happening and what "better" would actually look like for you — in your words.</p></div></div>
-      <div class="process-step fade"><div class="step-dot">03</div><div><h4>Skills + depth</h4><p>Practical tools you can use this week, combined with deeper work on the patterns underneath. Most clients feel movement within 6–8 sessions.</p></div></div>
-      <div class="process-step fade"><div class="step-dot">04</div><div><h4>Stepping down, not off</h4><p>As things improve we space sessions out. The goal was never therapy forever — it's you, resourced.</p></div></div>
-    </div>
-  </div>
-</section>
+  <p class="salutation">Hi —</p>
 
-<section style="background:var(--s3)" class="quote-section">
-  <svg class="divider" style="margin-top:-100px;margin-bottom:0" viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0 22 Q 300 0 600 22 T 1200 22 V 44 H 0 Z" fill="var(--s3)"/></svg>
-  <div class="wrap fade">
-    <blockquote>"I came in thinking I just needed stress tips. What I got was the first person who actually understood how my brain works."</blockquote>
-    <cite>Client, 34 — shared with permission</cite>
-  </div>
-  <svg class="divider" viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0 22 Q 300 44 600 22 T 1200 22 V 44 H 0 Z" fill="var(--s2)"/></svg>
-</section>
+  <p class="fade">If you're reading this, something in your life probably looks fine from the outside. The job's going well, or well enough. People rely on you. You show up.</p>
 
-<section style="background:var(--s2)" id="fees">
-  <div class="wrap">
-    <div class="sec-head fade">
-      <h2>Fees & sessions</h2>
-      <p style="font-size:17px">I'm out-of-network with insurance and provide superbills — most clients get 50–80% reimbursed.</p>
-    </div>
-    <div class="fee-grid fade">
-      <div class="fee-card">
-        <h3>Free consult</h3>
-        <div class="fee-price">$0<span> / 15 min</span></div>
-        <p class="fee-desc">A no-pressure call to see if we're the right fit.</p>
-        <ul class="fee-list"><li>Phone or video</li><li>Your questions answered</li></ul>
-      </div>
-      <div class="fee-card featured">
-        <h3>Individual session</h3>
-        <div class="fee-price">$165<span> / 50 min</span></div>
-        <p class="fee-desc">Weekly or biweekly, in-person or via secure video.</p>
-        <ul class="fee-list"><li>50-minute session</li><li>Superbill provided monthly</li></ul>
-      </div>
-      <div class="fee-card">
-        <h3>Extended session</h3>
-        <div class="fee-price">$240<span> / 80 min</span></div>
-        <p class="fee-desc">For deeper work or when 50 minutes isn't enough.</p>
-        <ul class="fee-list"><li>80-minute session</li><li>By arrangement</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
+  <p class="fade">And underneath that, something's been humming at a volume that doesn't turn off. Maybe it's the 3am replay of a conversation nobody else remembers. Maybe it's the sense that if you stop moving for even a day, something you've built will come apart.</p>
 
-<section>
-  <div class="wrap" style="max-width:740px">
-    <div class="sec-head fade"><h2>Common questions</h2></div>
-    <details open><summary>Do you take insurance?</summary><p>I'm out-of-network and provide a monthly superbill — most PPO plans reimburse 50–80% after deductible.</p></details>
-    <details><summary>How long does therapy take?</summary><p>Most clients feel real movement within 6–8 sessions. You're never locked in — we review progress every couple months.</p></details>
-    <details><summary>Is online therapy effective?</summary><p>For the work I do, yes — the research is solid. About half my practice is telehealth.</p></details>
-  </div>
-</section>
+  <p class="fade emphasis">I work with people exactly there — high-functioning, quietly exhausted, and not entirely sure therapy is even the right move.</p>
 
-<section id="book">
-  <div class="wrap">
-    <div class="cta-section fade">
-      <h2>The hardest part is the first email</h2>
-      <p>You don't need to have it figured out. "I think I need to talk to someone" is enough.</p>
-      <a class="btn" href="mailto:hello@elenamarshtherapy.com">Book your free consult</a>
-      <small>hello@elenamarshtherapy.com · (503) 555-0142</small>
-    </div>
-  </div>
-</section>
+  <p class="fade">It usually is. Not because you're broken — you're not — but because the strategies that got you this far (control, overpreparation, never letting anyone see you struggle) have a ceiling. Most of my clients hit it right around the point they reach out to someone like me.</p>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-col" style="max-width:260px"><a class="logo" href="#" style="display:block;margin-bottom:10px">Elena Marsh, LPC</a><p>Therapy for anxious high-achievers.</p></div>
-      <div class="foot-col"><h5>Practice</h5><a href="#specialties">Specialties</a><a href="#process">Approach</a><a href="#fees">Fees</a></div>
-      <div class="foot-col"><h5>Crisis resources</h5><p>If you're in crisis, call or text <strong>988</strong> — available 24/7.</p></div>
-    </div>
-    <div class="legal"><span>© 2026 Elena Marsh Counseling LLC · Demo by Bogdan Carcadea</span></div>
+  <p class="fade">What we'd actually do together: some structured tools you can use the same week (I lean on CBT and ACT, not vague talk-therapy platitudes), and slower work on where the pressure is really coming from. Most people feel real movement in six to eight sessions. Nobody's signing up for therapy forever.</p>
+
+  <hr class="rule">
+
+  <div class="practicalities fade">
+    <div class="label">The practical part</div>
+    <dl>
+      <dt>Fee</dt><dd>$165 / 50-minute session</dd>
+      <dt>Format</dt><dd>In-person (Portland) or secure video, anywhere in Oregon</dd>
+      <dt>Insurance</dt><dd>Out-of-network — I provide a superbill, most clients get 50–80% reimbursed</dd>
+      <dt>First step</dt><dd>A free 15-minute call, no obligation either direction</dd>
+    </dl>
   </div>
-</footer>
+
+  <p class="fade">If any of this sounds like you, the whole first move is just a short call — you tell me what's going on, I tell you honestly whether I'm the right fit. That's genuinely it.</p>
+
+  <div class="signoff fade">
+    <span class="sig">Elena</span>
+    <span class="credential">Elena Marsh, LPC · Oregon License #C4821</span>
+  </div>
+
+  <p class="ps fade">P.S. — "I think I need to talk to someone" is a complete sentence. You don't need the rest of it figured out first.</p>
+
+  <div class="contact-strip fade">
+    <span>hello@elenamarshtherapy.com</span>
+    <a class="book-btn" href="mailto:hello@elenamarshtherapy.com?subject=Free%2015-minute%20call">Book the free call</a>
+  </div>
+
+</div>
+
+<p class="crisis">If you're in crisis, please call or text <strong>988</strong> (Suicide & Crisis Lifeline) — available 24/7. This page is not monitored for emergencies. · Demo by Bogdan Carcadea</p>
 
 <script>
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-  }, {threshold:.15});
-  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
-
-  const io2 = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('drawn'); });
-  }, {threshold:.3});
-  document.querySelectorAll('.draw').forEach(el=>io2.observe(el));
+  }, {threshold:.2});
+  document.querySelectorAll('.fade').forEach((el,i)=>{ el.style.transitionDelay = (i*0.03)+'s'; io.observe(el); });
 </script>
 
 </body>
