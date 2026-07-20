@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitfield Sterling — Business & Contract Counsel</title>
+<meta name="description" content="Outside general counsel for founders who've outgrown ad-hoc legal help. Contracts, formation, and fundraising counsel.">
+<style>
+  :root{
+    --forest:#122019; --forest-2:#1a2e24; --forest-light:#264438;
+    --cream:#f4efe4; --cream-2:#ebe3d0; --gold:#b5924f; --gold-bright:#d4b06a;
+    --ink:#1a1712; --muted:#6b6558;
+    --display:'Instrument Serif', Georgia, serif; --sans:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+  ::selection{background:var(--gold);color:var(--forest)}
+
+  nav{position:sticky;top:0;z-index:60;background:rgba(244,239,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(18,32,25,.1)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;height:80px}
+  .logo{font-family:var(--display);font-size:24px;font-style:italic}
+  .nav-links{display:flex;gap:36px;align-items:center;font-size:13px;letter-spacing:.4px;text-transform:uppercase}
+  .nav-links a{opacity:.75;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  .btn{background:var(--forest);color:var(--cream);padding:13px 26px;border-radius:2px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;transition:background .25s}
+  .btn:hover{background:var(--forest-light)}
+
+  /* HERO — deep forest, gold rule frame */
+  .hero{background:var(--forest);color:var(--cream);padding:110px 0}
+  .hero-frame{border:1px solid rgba(212,176,106,.35);padding:64px 56px;position:relative}
+  .hero-frame::before,.hero-frame::after{content:"";position:absolute;width:22px;height:22px;border:1px solid var(--gold-bright)}
+  .hero-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+  .hero-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+  .kicker{font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-bright);margin-bottom:26px}
+  h1{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(38px,5.6vw,66px);line-height:1.08;max-width:760px;margin-bottom:28px}
+  .lead{font-size:17.5px;color:#c8c2b0;max-width:500px;margin-bottom:36px}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+  .btn-ghost{border:1px solid rgba(244,239,228,.4);color:var(--cream);padding:12px 25px;border-radius:2px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;transition:border-color .2s}
+  .btn-ghost:hover{border-color:var(--cream)}
+
+  section{padding:110px 0}
+  .sec-label{font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  h2{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.15;margin-bottom:18px}
+  .sec-sub{color:var(--muted);font-size:16.5px;max-width:560px}
+
+  .fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .fade.in{opacity:1;transform:translateY(0)}
+
+  /* SERVICES — numbered ledger rows */
+  .service-list{border-top:1px solid rgba(18,32,25,.15);margin-top:56px}
+  .service-row{display:grid;grid-template-columns:60px 1fr 200px;gap:28px;padding:36px 0;border-bottom:1px solid rgba(18,32,25,.15);align-items:baseline}
+  .s-num{font-family:var(--display);font-style:italic;font-size:24px;color:var(--gold)}
+  .service-row h3{font-size:20px;font-weight:600;margin-bottom:8px}
+  .service-row p{font-size:14.5px;color:var(--muted);max-width:460px}
+  .service-price{text-align:right;font-size:14px;color:var(--muted)}
+  .service-price b{display:block;font-family:var(--display);font-style:italic;font-size:22px;color:var(--ink)}
+
+  /* PROCESS — dark band */
+  .process-band{background:var(--forest-2);color:var(--cream)}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px}
+  .process-item{padding:0 32px 0 0;border-right:1px solid rgba(212,176,106,.2)}
+  .process-item:last-child{border-right:none;padding-right:0}
+  .process-item:not(:first-child){padding-left:32px}
+  .p-mark{font-family:var(--display);font-style:italic;font-size:32px;color:var(--gold-bright);margin-bottom:18px}
+  .process-item h3{font-size:18px;font-weight:600;margin-bottom:10px}
+  .process-item p{font-size:14.5px;color:#b8b2a0}
+
+  /* CREDENTIALS STRIP */
+  .creds-strip{border-top:1px solid rgba(18,32,25,.15);border-bottom:1px solid rgba(18,32,25,.15)}
+  .creds-grid{display:flex;justify-content:space-between;padding:44px 0;flex-wrap:wrap;gap:24px}
+  .cred{text-align:center}
+  .cred b{display:block;font-family:var(--display);font-style:italic;font-size:34px;color:var(--forest)}
+  .cred span{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}
+  .portrait-frame{aspect-ratio:3/3.7;background:var(--forest);position:relative;padding:16px}
+  .portrait-inner{width:100%;height:100%;background:radial-gradient(120% 90% at 30% 15%, #2e4437 0%, #1a2e24 55%, #0e1712 100%);position:relative}
+  .about-copy p{color:var(--muted);font-size:16px;margin-bottom:18px}
+  .about-copy p strong{color:var(--ink)}
+
+  /* QUOTE */
+  .quote-band{background:var(--cream-2);text-align:center}
+  .quote-band blockquote{font-family:var(--display);font-style:italic;font-size:clamp(24px,3.2vw,34px);line-height:1.4;max-width:760px;margin:0 auto 22px;color:var(--forest)}
+  .quote-band cite{font-size:13px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+
+  .final{background:var(--forest);color:var(--cream);text-align:center;padding:120px 32px}
+  .final h2{color:var(--cream)}
+  .final p{color:#c8c2b0;font-size:17px;max-width:480px;margin:0 auto 34px}
+  .final small{display:block;margin-top:18px;font-size:12.5px;color:#8a8474}
+
+  footer{padding:44px 0;font-size:12.5px;color:var(--muted);border-top:1px solid rgba(18,32,25,.1)}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(max-width:860px){
+    .about-grid,.process-grid{grid-template-columns:1fr;gap:40px}
+    .process-item{border-right:none;padding:0 0 28px;border-bottom:1px solid rgba(212,176,106,.2)}
+    .process-item:not(:first-child){padding-left:0;padding-top:28px}
+    .service-row{grid-template-columns:1fr}
+    .service-price{text-align:left}
+    .nav-links a:not(.btn){display:none}
+    .hero-frame{padding:40px 24px}
+    section{padding:64px 0}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo">Whitfield Sterling</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a class="btn" href="#contact">Schedule a call</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-frame">
+      <p class="kicker">Business & Contract Counsel</p>
+      <h1>Legal counsel for founders who've outgrown a template contract and a prayer.</h1>
+      <p class="lead">Outside general counsel for companies past the DIY-legal stage — formation, fundraising documents, and the contracts that actually hold up when it matters.</p>
+      <div class="hero-ctas">
+        <a class="btn" style="background:var(--gold-bright);color:var(--forest)" href="#contact">Schedule a consultation</a>
+        <a class="btn-ghost" href="#services">View services</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="creds-strip">
+  <div class="wrap creds-grid fade">
+    <div class="cred"><b>14</b><span>Years in practice</span></div>
+    <div class="cred"><b>$40M+</b><span>Financings counseled</span></div>
+    <div class="cred"><b>120+</b><span>Companies served</span></div>
+    <div class="cred"><b>Barred</b><span>NY & DE</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="sec-label fade">Services</p>
+    <h2 class="fade">Counsel, not just documents</h2>
+    <p class="sec-sub fade">Flat-fee where possible. You'll always know the number before we start.</p>
+    <div class="service-list fade">
+      <div class="service-row">
+        <span class="s-num">01</span>
+        <div><h3>Entity formation</h3><p>Delaware C-corp or LLC formation, cap table setup, founder agreements, IP assignment.</p></div>
+        <div class="service-price"><b>$1,800</b>flat fee</div>
+      </div>
+      <div class="service-row">
+        <span class="s-num">02</span>
+        <div><h3>Fundraising counsel</h3><p>SAFE or priced round documents, term sheet review, closing coordination with investor counsel.</p></div>
+        <div class="service-price"><b>$4,500+</b>by round size</div>
+      </div>
+      <div class="service-row">
+        <span class="s-num">03</span>
+        <div><h3>Contract review & drafting</h3><p>MSAs, vendor agreements, employment contracts — reviewed or drafted, redlined in plain English.</p></div>
+        <div class="service-price"><b>$450</b>/hr, capped estimate</div>
+      </div>
+      <div class="service-row">
+        <span class="s-num">04</span>
+        <div><h3>Ongoing general counsel</h3><p>Monthly retainer — contract review, quick legal questions, and a real relationship with someone who knows your business.</p></div>
+        <div class="service-price"><b>$2,200</b>/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-band" id="process">
+  <div class="wrap">
+    <p class="sec-label fade" style="color:var(--gold-bright)">How we work together</p>
+    <h2 class="fade" style="color:var(--cream)">No surprise invoices</h2>
+    <div class="process-grid fade">
+      <div class="process-item"><span class="p-mark">I.</span><h3>Free 20-minute call</h3><p>What you need, what it'll cost, whether I'm the right counsel for it. No obligation.</p></div>
+      <div class="process-item"><span class="p-mark">II.</span><h3>Fixed-fee proposal</h3><p>For defined work, you get a number before anything starts. No surprise invoices, ever.</p></div>
+      <div class="process-item"><span class="p-mark">III.</span><h3>Direct access</h3><p>Email or a scheduled call, not a partner-associate relay. You reach me directly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap fade">
+    <blockquote>"He caught a liability clause our previous lawyer missed entirely — on a contract we'd already signed. Fixed it before it became a problem."</blockquote>
+    <cite>Founder, Series A SaaS company</cite>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="portrait-frame fade"><div class="portrait-inner"></div></div>
+    <div class="about-copy fade">
+      <p class="sec-label">About</p>
+      <h2>Fourteen years, one focus</h2>
+      <p>I spent six years at a corporate firm before going independent — <strong>long enough to know how the big-firm playbook works, and why most founders don't need it.</strong></p>
+      <p>My practice is deliberately focused: business formation, fundraising, and contracts. Not a generalist trying to cover everything — a specialist who's seen the specific mistakes that actually cost founders money.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <h2>Worth a 20-minute call</h2>
+  <p>No obligation, no sales pressure — just an honest read on what you actually need.</p>
+  <a class="btn" style="background:var(--gold-bright);color:var(--forest)" href="mailto:hello@whitfieldsterling.law">Schedule your consultation</a>
+  <small>hello@whitfieldsterling.law · Licensed in NY & DE · Not a substitute for jurisdiction-specific advice</small>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Whitfield Sterling Law · Attorney Advertising</span>
+    <span>Demo by Bogdan Carcadea</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.15});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
