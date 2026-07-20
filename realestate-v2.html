@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marcus Vale — Luxury Real Estate, Austin TX</title>
+<meta name="description" content="Austin's quiet advantage in luxury real estate. $180M+ sold.">
+<style>
+  :root{
+    --ink:#15181d; --paper:#f7f5f0; --line:#c9bfa8; --line-strong:#8a7d5c;
+    --gold:#a8863f; --muted:#6b6f76;
+    --serif:'Source Serif 4', Georgia, serif; --sans:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 26px}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;height:70px}
+  .logo{font-family:var(--serif);font-size:19px;letter-spacing:1px;font-weight:600}
+  .logo em{font-style:normal;color:var(--gold)}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:13.5px}
+  .pill{background:var(--ink);color:#fff;padding:11px 22px;border-radius:2px;font-size:13px;font-weight:600;letter-spacing:.3px}
+
+  /* BLUEPRINT GRID BACKDROP */
+  .blueprint-bg{position:relative;overflow:hidden}
+  .blueprint-bg::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px;opacity:.35;pointer-events:none}
+
+  .hero{padding:90px 0 0}
+  .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;padding:40px 0 80px}
+  .kicker{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  h1{font-family:var(--serif);font-size:clamp(38px,5vw,58px);font-weight:600;line-height:1.08;letter-spacing:-.5px;margin-bottom:20px}
+  .lead{font-size:17.5px;color:var(--muted);max-width:440px;margin-bottom:30px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .ghost{border:1.5px solid var(--ink);padding:10px 20px;border-radius:2px;font-size:13px;font-weight:600}
+
+  /* BLUEPRINT HOUSE — draws itself in stroke, once, on scroll into view */
+  .blueprint-house{width:100%;max-width:520px}
+  .blueprint-house path,.blueprint-house line{fill:none;stroke:var(--line-strong);stroke-width:1.4}
+  .blueprint-house .dim{stroke:var(--gold);stroke-width:1;stroke-dasharray:3 3}
+  .blueprint-house text{font-family:var(--sans);font-size:9px;fill:var(--muted);letter-spacing:.5px}
+  .draw{stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 2.8s cubic-bezier(.16,1,.3,1)}
+  .draw.drawn{stroke-dashoffset:0}
+  .draw.delay1{transition-delay:.3s}
+  .draw.delay2{transition-delay:.7s}
+  .draw.delay3{transition-delay:1.1s}
+
+  /* STATS — count up once in view */
+  .stats-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink);color:var(--paper)}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:52px 0}
+  .stat{text-align:center;border-left:1px solid rgba(247,245,240,.15)}
+  .stat:first-child{border-left:none}
+  .stat b{display:block;font-family:var(--serif);font-size:clamp(32px,3.6vw,44px);font-weight:600}
+  .stat span{font-size:12.5px;color:#a8a49a;text-transform:uppercase;letter-spacing:.6px}
+
+  section{padding:100px 0}
+  h2{font-family:var(--serif);font-size:clamp(28px,3.6vw,40px);font-weight:600;letter-spacing:-.3px;margin-bottom:14px}
+  .sec-head{max-width:640px;margin-bottom:56px}
+  .sec-head p{color:var(--muted);font-size:16.5px}
+
+  .fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .fade.in{opacity:1;transform:translateY(0)}
+
+  /* PROCESS — blueprint annotation style, numbered like drawing callouts */
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+  .process-item{padding:36px 32px 0;border-left:1px solid var(--line);position:relative}
+  .process-item:first-child{border-left:none;padding-left:0}
+  .callout{width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:15px;color:var(--gold);margin-bottom:20px}
+  .process-item h3{font-size:18px;font-weight:600;margin-bottom:10px}
+  .process-item p{font-size:14.5px;color:var(--muted)}
+
+  /* LISTINGS — line-art floor-plan icon instead of photo */
+  .listings{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+  .listing{background:var(--paper);padding:36px 30px}
+  .plan-icon{width:100%;height:120px;margin-bottom:20px}
+  .plan-icon path,.plan-icon line{fill:none;stroke:var(--line-strong);stroke-width:1.2}
+  .listing h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--gold);margin-bottom:4px}
+  .listing .addr{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+  .listing .specs{display:flex;gap:12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+  .quote-band{background:var(--ink);color:var(--paper);text-align:center}
+  .quote-band blockquote{font-family:var(--serif);font-size:clamp(24px,3.2vw,34px);font-weight:400;font-style:italic;line-height:1.35;max-width:800px;margin:0 auto 22px}
+  .quote-band cite{font-style:normal;font-size:13px;color:#a8a49a}
+
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+  .signature-block{border:1px solid var(--line);padding:40px;position:relative}
+  .signature-block::before{content:"";position:absolute;top:12px;left:12px;right:12px;bottom:12px;border:1px solid var(--line)}
+  .signature-block-inner{position:relative}
+  .about-copy p{color:var(--muted);font-size:16px;margin-bottom:16px}
+  .about-copy p strong{color:var(--ink)}
+  .creds{display:flex;gap:30px;margin-top:26px;flex-wrap:wrap}
+  .cred b{display:block;font-family:var(--serif);font-size:24px;font-weight:600}
+  .cred span{font-size:12px;color:var(--muted)}
+
+  .final{background:var(--ink);color:var(--paper);text-align:center;padding:110px 26px}
+  .final h2{color:var(--paper)}
+  .final p{color:#c8c4b8;font-size:17px;max-width:500px;margin:0 auto 32px}
+  .final .pill{background:var(--gold);color:var(--ink)}
+  .final small{display:block;margin-top:18px;font-size:12.5px;color:#8a8678}
+
+  footer{background:var(--paper);padding:36px 0;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(max-width:860px){
+    .hero-inner,.about-grid{grid-template-columns:1fr;gap:44px}
+    .stat-grid,.process-grid,.listings{grid-template-columns:1fr}
+    .stat{border-left:none;border-top:1px solid rgba(247,245,240,.15);padding-top:20px}
+    .stat:first-child{border-top:none}
+    .process-item{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:28px}
+    .nav-links a:not(.pill){display:none}
+    section{padding:64px 0}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#">MARCUS <em>VALE</em></a>
+    <div class="nav-links">
+      <a href="#listings">Listings</a>
+      <a href="#process">Selling</a>
+      <a href="#about">About</a>
+      <a class="pill" href="#contact">Request a valuation</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero blueprint-bg">
+  <div class="wrap hero-inner">
+    <div>
+      <p class="kicker">Austin · Westlake · Tarrytown · Barton Creek</p>
+      <h1>Exceptional homes. Quietly sold.</h1>
+      <p class="lead">$180M+ in career sales, an off-market network most agents can't reach, and a negotiation style that never needs to raise its voice.</p>
+      <div class="cta-row">
+        <a class="pill" href="#contact">Request a private valuation</a>
+        <a class="ghost" href="#listings">View recent sales</a>
+      </div>
+    </div>
+    <svg class="blueprint-house" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+      <path class="draw" d="M60 180 L60 300 L340 300 L340 180 L200 80 Z"/>
+      <path class="draw delay1" d="M60 180 L340 180"/>
+      <path class="draw delay1" d="M140 220 L140 300 M140 250 L200 250 M200 220 L200 300"/>
+      <path class="draw delay2" d="M240 220 L300 220 L300 270 L240 270 Z"/>
+      <path class="draw delay2" d="M240 245 L300 245"/>
+      <line class="dim draw delay3" x1="60" y1="315" x2="340" y2="315"/>
+      <line class="dim draw delay3" x1="60" y1="308" x2="60" y2="322"/>
+      <line class="dim draw delay3" x1="340" y1="308" x2="340" y2="322"/>
+      <text x="180" y="332">42'-0"</text>
+      <line class="dim draw delay3" x1="355" y1="180" x2="355" y2="300"/>
+      <text x="358" y="245" transform="rotate(90 358 245)">28'-0"</text>
+    </svg>
+  </div>
+</header>
+
+<div class="stats-band">
+  <div class="wrap stat-grid">
+    <div class="stat fade"><b class="counter" data-target="180" data-suffix="M+">0</b><span>Career sales volume</span></div>
+    <div class="stat fade"><b class="counter" data-target="14" data-suffix="">0</b><span>Days avg. on market</span></div>
+    <div class="stat fade"><b class="counter" data-target="103" data-suffix="%">0</b><span>Of list price achieved</span></div>
+    <div class="stat fade"><b class="counter" data-target="68" data-suffix="%">0</b><span>Business from referrals</span></div>
+  </div>
+</div>
+
+<section id="listings">
+  <div class="wrap">
+    <div class="sec-head fade"><h2>Recent representation</h2><p>A selection of recent sales — several never touched the public market.</p></div>
+  </div>
+  <div class="listings fade">
+    <div class="listing">
+      <svg class="plan-icon" viewBox="0 0 200 100"><rect x="10" y="10" width="180" height="80"/><line x1="90" y1="10" x2="90" y2="60"/><line x1="90" y1="60" x2="190" y2="60"/><line x1="10" y1="60" x2="90" y2="60"/><path d="M60 10 L60 30" stroke-dasharray="2 2"/></svg>
+      <h3>$4.2M</h3><p class="addr">Westlake Hills · Represented seller</p>
+      <div class="specs"><span>5 bd</span><span>6 ba</span><span>6,400 sqft</span></div>
+    </div>
+    <div class="listing">
+      <svg class="plan-icon" viewBox="0 0 200 100"><rect x="10" y="15" width="180" height="70"/><line x1="70" y1="15" x2="70" y2="85"/><line x1="140" y1="15" x2="140" y2="85"/><line x1="70" y1="50" x2="140" y2="50"/></svg>
+      <h3>$2.85M</h3><p class="addr">Tarrytown · Represented seller</p>
+      <div class="specs"><span>4 bd</span><span>4.5 ba</span><span>4,100 sqft</span></div>
+    </div>
+    <div class="listing">
+      <svg class="plan-icon" viewBox="0 0 200 100"><rect x="10" y="10" width="180" height="80"/><line x1="100" y1="10" x2="100" y2="90"/><line x1="10" y1="45" x2="100" y2="45"/><line x1="100" y1="60" x2="190" y2="60"/></svg>
+      <h3>$3.6M</h3><p class="addr">Barton Creek · Represented buyer</p>
+      <div class="specs"><span>5 bd</span><span>5 ba</span><span>5,800 sqft</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head fade"><h2>Selling, handled properly</h2><p>Luxury sales fail on preparation and discretion. Here's how mine don't.</p></div>
+    <div class="process-grid fade">
+      <div class="process-item"><div class="callout">01</div><h3>Prepare</h3><p>Pricing strategy from private comps, staging consultation, and pre-inspection — problems solved before buyers see them.</p></div>
+      <div class="process-item"><div class="callout">02</div><h3>Place</h3><p>Before anything goes public, your home is presented to my private network of qualified buyers. Many sales end here.</p></div>
+      <div class="process-item"><div class="callout">03</div><h3>Close</h3><p>Multiple-offer orchestration and a closing process I manage personally — you'll never chase me for an update.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap fade">
+    <blockquote>"Marcus sold our home in nine days, $140K over ask, and the whole thing felt effortless."</blockquote>
+    <cite>The Harrisons · Tarrytown sellers, 2025</cite>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="signature-block fade">
+      <div class="signature-block-inner">
+        <p class="kicker" style="margin-bottom:16px">Est. 2011</p>
+        <p style="font-family:var(--serif);font-size:22px;font-style:italic">"Fifteen years, one market, zero shortcuts."</p>
+      </div>
+    </div>
+    <div class="about-copy fade">
+      <h2>About Marcus</h2>
+      <p>I've sold Austin luxury real estate through two booms, one correction, and a pandemic. That cycle-tested judgment is what my clients pay for — <strong>the price advice that's right, not the one that wins the listing.</strong></p>
+      <p>My practice is deliberately small: a limited number of clients at a time, every negotiation handled by me personally.</p>
+      <div class="creds">
+        <div class="cred"><b>15 yrs</b><span>Austin luxury market</span></div>
+        <div class="cred"><b>Top 1%</b><span>Austin Board of REALTORS®</span></div>
+        <div class="cred"><b>CLHMS</b><span>Luxury Home Marketing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <h2>What is your home actually worth?</h2>
+  <p>A private, data-driven valuation — no obligation, no sign in your yard until you're ready.</p>
+  <a class="pill" href="mailto:marcus@valeproperties.com">Request your private valuation</a>
+  <small>marcus@valeproperties.com · (512) 555-0188</small>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Vale Properties · Marcus Vale, REALTOR® · TREC #745821 · Demo by Bogdan Carcadea</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.15});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+  const io2 = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('drawn'); });
+  }, {threshold:.25});
+  document.querySelectorAll('.draw').forEach(el=>io2.observe(el));
+
+  const counters = document.querySelectorAll('.counter');
+  const io3 = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !e.target.dataset.done){
+        e.target.dataset.done = "1";
+        const target = parseInt(e.target.dataset.target);
+        const suffix = e.target.dataset.suffix;
+        const dur = 1400, start = performance.now();
+        function tick(now){
+          const p = Math.min((now-start)/dur, 1);
+          const eased = 1 - Math.pow(1-p, 3);
+          e.target.textContent = Math.round(eased*target) + suffix;
+          if(p<1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+    });
+  }, {threshold:.5});
+  counters.forEach(el=>io3.observe(el));
+</script>
+
+</body>
+</html>
