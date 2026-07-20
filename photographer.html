@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA KANE — Wedding & Editorial Photographer, NYC</title>
+<meta name="description" content="Cinematic wedding and editorial photography in New York. Bold, honest, unposed. Booking 2026–2027.">
+<style>
+  :root{
+    --black:#000000; --black-soft:#0a0a0a; --white:#ffffff; --white-mute:#c9c9cf;
+    --hairline:#2a2a2f; --accent:#e0473a;
+    --din:'Archivo', 'Arial Narrow', Arial, sans-serif;
+    --body-font:'Inter', Arial, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);font-family:var(--body-font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .caps{text-transform:uppercase;letter-spacing:2px}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;mix-blend-mode:difference}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:26px 32px}
+  .logo{font-family:var(--din);font-weight:800;font-size:19px;letter-spacing:4px;text-transform:uppercase}
+  .nav-links{display:flex;gap:34px}
+  .nav-links a{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.85;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+
+  /* HERO */
+  .hero{height:100vh;min-height:640px;position:relative;display:flex;align-items:flex-end;overflow:hidden;
+    background:
+      radial-gradient(90% 60% at 70% 20%, rgba(224,71,58,.14), transparent 60%),
+      radial-gradient(140% 100% at 30% 90%, #1a1215 0%, #0b0709 45%, #000 100%)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(42% 60% at 68% 46%, rgba(255,255,255,.07), transparent 70%),
+      linear-gradient(180deg, transparent 60%, rgba(0,0,0,.75) 100%);
+    pointer-events:none}
+  .hero-couple{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(46vw,520px);height:76%;
+    background:
+      radial-gradient(38% 24% at 41% 13%, #2e2a28 0%, #2e2a28 92%, transparent 100%),
+      radial-gradient(36% 22% at 60% 16%, #26221f 0%, #26221f 92%, transparent 100%),
+      linear-gradient(178deg, transparent 22%, #17141a 23%, #0f0d12 60%, #000 100%);
+    filter:blur(1px);opacity:.9}
+  .hero-content{position:relative;z-index:2;width:100%;padding-bottom:8vh}
+  .hero h1{font-family:var(--din);font-weight:800;font-size:clamp(56px,11vw,150px);line-height:.92;letter-spacing:.02em;text-transform:uppercase}
+  .hero h1 span{display:block;-webkit-text-stroke:1.5px var(--white);color:transparent}
+  .hero-sub{display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px;gap:24px;flex-wrap:wrap}
+  .hero-sub p{font-size:15px;color:var(--white-mute);max-width:380px;line-height:1.7}
+  .scroll-hint{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--white-mute);display:flex;align-items:center;gap:12px}
+  .scroll-hint::after{content:"";width:48px;height:1px;background:var(--white-mute)}
+
+  /* GHOST BUTTON */
+  .btn-ghost{display:inline-block;font-family:var(--din);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--white);border:1px solid var(--white);border-radius:9999px;padding:17px 34px;transition:background .25s,color .25s}
+  .btn-ghost:hover{background:var(--white);color:var(--black)}
+  .btn-solid{display:inline-block;font-family:var(--din);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--black);background:var(--white);border:1px solid var(--white);border-radius:9999px;padding:17px 34px;transition:opacity .25s}
+  .btn-solid:hover{opacity:.85}
+
+  /* MARQUEE BAND */
+  .band{border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:20px 0;overflow:hidden;white-space:nowrap}
+  .band-track{display:inline-block;animation:slide 28s linear infinite;font-family:var(--din);font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--white-mute)}
+  .band-track span{margin:0 34px}
+  .band-track em{font-style:normal;color:var(--accent)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* WORK GRID */
+  section{padding:110px 0}
+  .sec-label{font-family:var(--din);font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  h2{font-family:var(--din);font-weight:800;font-size:clamp(34px,5.5vw,64px);line-height:1.02;letter-spacing:.01em;text-transform:uppercase;margin-bottom:20px}
+  .sec-sub{font-size:16px;color:var(--white-mute);max-width:520px}
+  .work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:64px}
+  .work{position:relative;border-radius:8px;overflow:hidden;display:flex;align-items:flex-end;transition:transform .35s}
+  .work:hover{transform:scale(.985)}
+  .work .tag{position:relative;z-index:2;padding:22px;font-family:var(--din);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+  .work .tag small{display:block;font-family:var(--body-font);font-weight:400;font-size:12px;letter-spacing:.5px;text-transform:none;color:var(--white-mute);margin-top:4px}
+  .work::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.72) 100%)}
+  .w1{grid-column:span 7;aspect-ratio:16/10;background:radial-gradient(80% 90% at 30% 30%, #4a2e2a 0%, #241416 50%, #0c0608 100%)}
+  .w2{grid-column:span 5;aspect-ratio:auto;background:radial-gradient(90% 80% at 70% 20%, #33383e 0%, #191c22 55%, #08090c 100%)}
+  .w3{grid-column:span 5;aspect-ratio:4/4.4;background:radial-gradient(100% 80% at 40% 80%, #3d3527 0%, #1e1a12 55%, #0a0806 100%)}
+  .w4{grid-column:span 7;aspect-ratio:16/10;background:radial-gradient(70% 90% at 60% 40%, #40262e 0%, #20121a 55%, #0a060a 100%)}
+
+  /* SERVICES */
+  .services{background:var(--black-soft);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+  .svc-list{margin-top:56px;border-top:1px solid var(--hairline)}
+  .svc{display:grid;grid-template-columns:80px 1fr auto auto;gap:28px;align-items:center;padding:34px 0;border-bottom:1px solid var(--hairline);transition:padding .3s}
+  .svc:hover{padding-left:12px}
+  .svc-num{font-family:var(--din);font-weight:700;font-size:14px;letter-spacing:2px;color:var(--white-mute)}
+  .svc h3{font-family:var(--din);font-weight:800;font-size:clamp(20px,2.6vw,30px);letter-spacing:.5px;text-transform:uppercase}
+  .svc p{font-size:14px;color:var(--white-mute);margin-top:6px;max-width:480px}
+  .svc-price{font-family:var(--din);font-weight:700;font-size:16px;letter-spacing:1px;color:var(--white);white-space:nowrap}
+  .svc-price small{display:block;font-family:var(--body-font);font-weight:400;font-size:12px;color:var(--white-mute);letter-spacing:0}
+  .svc-arrow{font-size:22px;color:var(--white-mute)}
+
+  /* QUOTE */
+  .quote{text-align:center}
+  .quote blockquote{font-family:var(--din);font-weight:800;font-size:clamp(26px,4.4vw,48px);line-height:1.15;text-transform:uppercase;letter-spacing:.01em;max-width:900px;margin:0 auto 30px}
+  .quote blockquote em{font-style:normal;color:var(--accent)}
+  .quote cite{font-style:normal;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--white-mute)}
+
+  /* ABOUT STRIP */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about-photo{aspect-ratio:4/4.8;border-radius:8px;background:
+    radial-gradient(60% 42% at 50% 26%, #3a3230 0%, #3a3230 90%, transparent 100%),
+    linear-gradient(180deg, #131316 0%, #131316 46%, #0b0b0e 47%, #000 100%)}
+  .about p{color:var(--white-mute);font-size:16px;line-height:1.75;margin-bottom:18px}
+  .about p strong{color:var(--white);font-weight:600}
+  .about-stats{display:flex;gap:44px;margin-top:32px}
+  .astat b{font-family:var(--din);font-weight:800;font-size:32px;display:block;letter-spacing:1px}
+  .astat span{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white-mute)}
+
+  /* CTA */
+  .cta{text-align:center;padding:130px 28px;position:relative;overflow:hidden;
+    background:radial-gradient(70% 90% at 50% 110%, rgba(224,71,58,.22), transparent 65%)}
+  .cta h2{font-size:clamp(40px,7vw,88px);margin-bottom:24px}
+  .cta p{color:var(--white-mute);font-size:17px;max-width:480px;margin:0 auto 40px}
+  .cta small{display:block;margin-top:24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--white-mute)}
+
+  footer{border-top:1px solid var(--hairline);padding:36px 0;font-size:12px;color:var(--white-mute)}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;letter-spacing:1px}
+
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .work-grid{grid-template-columns:1fr}
+    .w1,.w2,.w3,.w4{grid-column:span 1;aspect-ratio:16/11}
+    .svc{grid-template-columns:1fr;gap:10px}
+    .svc-arrow{display:none}
+    .about{grid-template-columns:1fr;gap:48px}
+    section{padding:72px 0}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">Nova Kane</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#book">Book</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-couple" aria-hidden="true"></div>
+  <div class="wrap hero-content">
+    <h1>Honest<span>Unposed</span>Cinematic</h1>
+    <div class="hero-sub">
+      <p>Wedding & editorial photography for people who hate stiff wedding photos. New York City & worldwide. Booking 2026–2027.</p>
+      <span class="scroll-hint">Scroll</span>
+    </div>
+  </div>
+</header>
+
+<div class="band" aria-hidden="true">
+  <div class="band-track">
+    <span>Featured in <em>Vogue Weddings</em></span><span>·</span>
+    <span><em>200+</em> weddings shot</span><span>·</span>
+    <span>Featured in <em>The Knot</em></span><span>·</span>
+    <span><em>48hr</em> sneak peeks</span><span>·</span>
+    <span>Featured in <em>Vogue Weddings</em></span><span>·</span>
+    <span><em>200+</em> weddings shot</span><span>·</span>
+    <span>Featured in <em>The Knot</em></span><span>·</span>
+    <span><em>48hr</em> sneak peeks</span><span>·</span>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <p class="sec-label">Selected work</p>
+    <h2>The moments between the moments</h2>
+    <p class="sec-sub">The look before the vows. The grandmother who cried first. The chaos of the dance floor at 1am. That's the wedding — everything else is just posing.</p>
+    <div class="work-grid">
+      <div class="work w1"><div class="tag">Amara & Dev<small>Brooklyn Winery — 2025</small></div></div>
+      <div class="work w2"><div class="tag">Editorial<small>Harper's feature — 2025</small></div></div>
+      <div class="work w3"><div class="tag">Lena & Marcus<small>Hudson Valley — 2024</small></div></div>
+      <div class="work w4"><div class="tag">Sofia & Jae<small>City Hall + rooftop — 2025</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <p class="sec-label">Services</p>
+    <h2>Straightforward pricing</h2>
+    <p class="sec-sub">No hidden fees, no "contact for pricing" games. Every package includes a full-resolution online gallery and print rights.</p>
+    <div class="svc-list">
+      <a class="svc" href="#book">
+        <span class="svc-num">01</span>
+        <div><h3>Full wedding day</h3><p>8 hours of coverage, two shooters, 600+ edited images, 48-hour sneak peek, full gallery in 4 weeks.</p></div>
+        <div class="svc-price">FROM $4,800<small>most booked</small></div>
+        <span class="svc-arrow">→</span>
+      </a>
+      <a class="svc" href="#book">
+        <span class="svc-num">02</span>
+        <div><h3>Elopement / City Hall</h3><p>Up to 3 hours anywhere in NYC. The ceremony, the streets, the celebration after. 150+ edited images.</p></div>
+        <div class="svc-price">FROM $1,900<small>weekdays available</small></div>
+        <span class="svc-arrow">→</span>
+      </a>
+      <a class="svc" href="#book">
+        <span class="svc-num">03</span>
+        <div><h3>Editorial & portrait</h3><p>Brand campaigns, artist portraits, and magazine work. Studio or location. Licensing tailored to usage.</p></div>
+        <div class="svc-price">DAY RATE $2,400<small>half-day available</small></div>
+        <span class="svc-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <blockquote>"We forgot Nova was there — and somehow every photo looks like a <em>film still</em>. People stop us to ask who shot our wedding."</blockquote>
+    <cite>Amara & Dev — Brooklyn Winery</cite>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap about">
+    <div class="about-photo" role="img" aria-label="Nova Kane portrait with camera"></div>
+    <div>
+      <p class="sec-label">About</p>
+      <h2 style="font-size:clamp(28px,4vw,48px)">Documentary eye, editorial polish</h2>
+      <p>I spent six years shooting editorial for magazines before my first wedding. That background is why my couples' photos look like <strong>campaign spreads, not wedding clichés</strong> — and why I work almost invisibly on the day.</p>
+      <p>My approach is simple: I don't direct your day, I document it. The only posed session is 20 minutes of portraits at golden hour — the rest is real.</p>
+      <div class="about-stats">
+        <div class="astat"><b>200+</b><span>Weddings</span></div>
+        <div class="astat"><b>9 yrs</b><span>Shooting</span></div>
+        <div class="astat"><b>100%</b><span>Galleries on time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="book">
+  <h2>Your date is<br>probably available</h2>
+  <p>2026 is filling fast, 2027 is open. Tell me your date and venue — I'll reply within 24 hours with availability and full pricing.</p>
+  <a class="btn-solid" href="mailto:hello@novakane.photo">Check your date</a>
+  <small>hello@novakane.photo · @novakane.photo</small>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="caps">© 2026 Nova Kane Photography · NYC</span>
+    <span class="caps">Demo site by CMB Studio</span>
+  </div>
+</footer>
+
+</body>
+</html>
