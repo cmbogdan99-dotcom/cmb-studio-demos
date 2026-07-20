@@ -51,6 +51,10 @@
 
   .disclaimer{max-width:720px;margin:0 auto 60px;padding:0 76px;font-family:var(--sans);font-size:11px;color:#8a8270;text-align:center}
 
+  .copy-hint{font-family:var(--sans);font-size:12px;color:var(--muted);opacity:0;transform:translateY(-4px);transition:opacity .3s,transform .3s;width:100%;margin-top:10px}
+  .copy-hint.show{opacity:1;transform:translateY(0)}
+  .copy-hint b{color:var(--ink)}
+
   @media(max-width:760px){
     .doc{padding:44px 28px;margin:30px auto 60px}
     .disclaimer{padding:0 28px}
@@ -115,13 +119,26 @@
   </div>
 
   <div class="cta-row">
-    <a class="btn" href="mailto:hello@whitfieldsterling.law?subject=20-minute%20call">Schedule the 20-minute call</a>
+    <a class="btn" id="scheduleBtn" href="mailto:hello@whitfieldsterling.law?subject=20-minute%20call">Schedule the 20-minute call</a>
     <span class="cta-note">hello@whitfieldsterling.law</span>
+    <div class="copy-hint" id="scheduleHint">Opening your email app… if nothing happens, email <b>hello@whitfieldsterling.law</b> directly — copied to your clipboard.</div>
   </div>
 
 </div>
 
 <p class="disclaimer">Attorney Advertising. This page does not constitute legal advice or create an attorney-client relationship. Demo by Bogdan Carcadea.</p>
+
+<script>
+  const scheduleBtn = document.getElementById('scheduleBtn');
+  const scheduleHint = document.getElementById('scheduleHint');
+  scheduleBtn.addEventListener('click', ()=>{
+    const email = 'hello@whitfieldsterling.law';
+    if(navigator.clipboard) navigator.clipboard.writeText(email).catch(()=>{});
+    scheduleHint.classList.add('show');
+    clearTimeout(scheduleHint._t);
+    scheduleHint._t = setTimeout(()=> scheduleHint.classList.remove('show'), 6000);
+  });
+</script>
 
 </body>
 </html>

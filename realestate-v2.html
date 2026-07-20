@@ -83,6 +83,10 @@
 
   footer{border-top:1px solid var(--line);padding:24px 0;font-size:11px;color:var(--text-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
+  .copy-hint{font-size:11.5px;color:var(--text-dim);opacity:0;transform:translateY(-4px);transition:opacity .3s,transform .3s;margin-top:12px;width:100%}
+  .copy-hint.show{opacity:1;transform:translateY(0)}
+  .copy-hint b{color:var(--amber)}
+
   @media(max-width:800px){
     table{font-size:11.5px}
     th:nth-child(4),td:nth-child(4){display:none}
@@ -156,8 +160,9 @@
     <div class="cmd-label">// request a private valuation — no obligation</div>
     <div class="cmd-input-row">
       <span class="prompt">$</span> mailto:marcus@valeproperties.com
-      <button class="cmd-btn" onclick="location.href='mailto:marcus@valeproperties.com?subject=Private%20valuation%20request'">SEND →</button>
+      <button class="cmd-btn" id="sendBtn">SEND →</button>
     </div>
+    <div class="copy-hint" id="sendHint">Opening your email app… if nothing happens, email <b>marcus@valeproperties.com</b> directly — copied to your clipboard.</div>
   </div>
 
   <footer>
@@ -171,6 +176,17 @@
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
   }, {threshold:.1});
   document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+  const sendBtn = document.getElementById('sendBtn');
+  const sendHint = document.getElementById('sendHint');
+  sendBtn.addEventListener('click', ()=>{
+    const email = 'marcus@valeproperties.com';
+    location.href = 'mailto:'+email+'?subject=Private%20valuation%20request';
+    if(navigator.clipboard) navigator.clipboard.writeText(email).catch(()=>{});
+    sendHint.classList.add('show');
+    clearTimeout(sendHint._t);
+    sendHint._t = setTimeout(()=> sendHint.classList.remove('show'), 6000);
+  });
 </script>
 
 </body>
