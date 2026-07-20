@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No. 12 Barbershop — Take a Number</title>
+<meta name="description" content="No. 12 Barbershop, East Nashville. Walk-ins welcome, no appointments, take a number.">
+<style>
+  :root{
+    --cream:#f0e6d2; --red:#a12b2b; --red-dark:#7a1f1f; --navy:#1b2838; --gold:#c9a961; --ink:#211a12;
+    --stencil:'Oswald', 'Arial Narrow', sans-serif; --sans:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--navy);color:var(--cream);font-family:var(--sans)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:520px;margin:0 auto}
+
+  /* THE TICKET — the entire page is one big paper ticket */
+  .ticket{background:var(--cream);color:var(--ink);margin:48px 20px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .ticket::before{content:"";position:absolute;top:-1px;left:0;right:0;height:14px;
+    background:radial-gradient(circle at 10px 0, transparent 8px, var(--navy) 8.5px) repeat-x;background-size:20px 14px;
+    transform:translateY(-13px)}
+  .ticket::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:14px;
+    background:radial-gradient(circle at 10px 14px, transparent 8px, var(--navy) 8.5px) repeat-x;background-size:20px 14px;
+    transform:translateY(13px)}
+
+  .perf{border-top:2px dashed #b0a488;margin:0 24px}
+
+  .stub-top{padding:30px 32px 24px;text-align:center}
+  .brand{font-family:var(--stencil);font-size:15px;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
+  .est{font-size:11px;letter-spacing:2px;color:#8a7d63;margin-top:4px}
+  .num-wrap{margin:26px 0 10px}
+  .num-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8a7d63;margin-bottom:6px}
+  .num{font-family:var(--stencil);font-size:110px;line-height:.9;color:var(--red);letter-spacing:-2px}
+  .now-serving{font-size:13px;color:var(--ink);margin-top:10px}
+  .now-serving b{color:var(--red)}
+
+  .stub-mid{padding:24px 32px}
+  .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #ddd0b0;font-size:14px}
+  .row:last-child{border-bottom:none}
+  .row .k{color:#7a6d54}
+  .row .v{font-weight:700;color:var(--ink)}
+
+  .stub-bottom{padding:22px 32px 34px;text-align:center}
+  .wait{font-family:var(--stencil);font-size:20px;letter-spacing:1px;color:var(--navy);margin-bottom:6px}
+  .wait span{color:var(--red)}
+  .addr{font-size:12.5px;color:#7a6d54;margin-bottom:20px;line-height:1.6}
+  .cta-btn{display:inline-block;background:var(--red);color:var(--cream);padding:14px 32px;font-family:var(--stencil);font-size:14px;letter-spacing:2px;text-transform:uppercase}
+
+  .barcode{display:flex;gap:2px;justify-content:center;margin-top:22px;height:34px}
+  .barcode span{display:block;width:2px;background:var(--ink)}
+
+  /* SERVICES — stamped price list, not cards */
+  .price-sheet{max-width:480px;margin:0 auto 60px;padding:0 20px}
+  .ps-head{text-align:center;margin-bottom:24px}
+  .ps-head b{font-family:var(--stencil);font-size:18px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+  .ps-row{display:flex;justify-content:space-between;padding:13px 4px;border-bottom:1px dotted #3a4a5c;font-size:14.5px}
+  .ps-row .name{color:var(--cream)}
+  .ps-row .name small{display:block;color:#7a8798;font-size:12px;margin-top:2px}
+  .ps-row .price{font-family:var(--stencil);color:var(--gold);font-size:16px}
+
+  .hours-block{max-width:480px;margin:0 auto 80px;padding:0 20px;text-align:center;font-size:13px;color:#7a8798}
+  .hours-block b{color:var(--cream);display:block;margin-bottom:10px;font-family:var(--stencil);letter-spacing:1px;font-size:14px}
+
+  footer{text-align:center;padding:0 20px 44px;font-size:11.5px;color:#4a5768}
+
+  .fade{opacity:0;transform:translateY(16px) rotate(-.5deg);transition:opacity .8s cubic-bezier(.2,1,.3,1),transform .8s cubic-bezier(.2,1,.3,1)}
+  .fade.in{opacity:1;transform:translateY(0) rotate(0)}
+
+  @media(max-width:560px){
+    .num{font-size:80px}
+    .stub-top,.stub-mid,.stub-bottom{padding-left:22px;padding-right:22px}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrap">
+  <div class="ticket fade">
+    <div class="stub-top">
+      <div class="brand">No. 12 Barbershop</div>
+      <div class="est">East Nashville — Est. 2018</div>
+      <div class="num-wrap">
+        <div class="num-label">Your number</div>
+        <div class="num">47</div>
+      </div>
+      <div class="now-serving">Now serving <b>№ 42</b> — walk-ins only, no appointments</div>
+    </div>
+
+    <div class="perf"></div>
+
+    <div class="stub-mid">
+      <div class="row"><span class="k">Cut</span><span class="v">$32</span></div>
+      <div class="row"><span class="k">Cut + beard</span><span class="v">$46</span></div>
+      <div class="row"><span class="k">Kids (12 &amp; under)</span><span class="v">$22</span></div>
+      <div class="row"><span class="k">Hot towel shave</span><span class="v">$38</span></div>
+    </div>
+
+    <div class="perf"></div>
+
+    <div class="stub-bottom">
+      <div class="wait">~<span>25 min</span> current wait</div>
+      <p class="addr">1104 Woodland St, Nashville, TN<br>Mon–Sat 9am–7pm · No appointments, ever</p>
+      <a class="cta-btn" href="tel:+16155550142">Call to check the line →</a>
+      <div class="barcode" aria-hidden="true">
+        <span style="height:34px"></span><span style="height:22px"></span><span style="height:34px"></span><span style="height:14px"></span><span style="height:34px"></span><span style="height:22px"></span><span style="height:34px"></span><span style="height:30px"></span><span style="height:14px"></span><span style="height:34px"></span><span style="height:22px"></span><span style="height:34px"></span><span style="height:14px"></span><span style="height:34px"></span><span style="height:30px"></span><span style="height:22px"></span><span style="height:34px"></span><span style="height:14px"></span><span style="height:34px"></span><span style="height:22px"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="price-sheet fade">
+  <div class="ps-head"><b>Full price list</b></div>
+  <div class="ps-row"><span class="name">Classic cut<small>Clipper or scissor, your call</small></span><span class="price">$32</span></div>
+  <div class="ps-row"><span class="name">Cut + beard trim<small>Line-up included</small></span><span class="price">$46</span></div>
+  <div class="ps-row"><span class="name">Hot towel shave<small>Straight razor, 25 min</small></span><span class="price">$38</span></div>
+  <div class="ps-row"><span class="name">Kids cut<small>12 and under</small></span><span class="price">$22</span></div>
+  <div class="ps-row"><span class="name">Buzz cut<small>One length, in and out</small></span><span class="price">$20</span></div>
+  <div class="ps-row"><span class="name">The works<small>Cut, beard, hot towel shave</small></span><span class="price">$68</span></div>
+</div>
+
+<div class="hours-block fade">
+  <b>Hours</b>
+  Monday – Saturday, 9am – 7pm · Closed Sundays<br>
+  No appointments. First come, first served — that's the whole system.
+</div>
+
+<footer>© 2026 No. 12 Barbershop — East Nashville · Demo by Bogdan Carcadea</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.1});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

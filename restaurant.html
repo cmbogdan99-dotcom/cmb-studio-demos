@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cellar & Ember — Chef's Table, Portland</title>
+<meta name="description" content="Seven-course tasting menu, twelve seats, one seating a night. Portland, OR.">
+<style>
+  :root{
+    --paper:#f7f1e6; --paper-2:#efe6d3; --ink:#2b2418; --body:#4a4030; --muted:#8a7d63; --rule:#c9b98d; --wine:#5c1f26;
+    --serif:'Cormorant', Georgia, serif; --script:'Cormorant', serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);}
+  a{color:inherit;text-decoration:none}
+
+  .card{max-width:640px;margin:56px auto 90px;background:var(--paper);border:1px solid var(--rule);position:relative;padding:64px 56px}
+  .card::before{content:"";position:absolute;inset:10px;border:1px solid var(--rule)}
+
+  .menu-inner{position:relative}
+
+  .crest{text-align:center;margin-bottom:6px}
+  .crest svg{width:52px;height:52px}
+  .name{text-align:center;font-size:38px;letter-spacing:3px;text-transform:uppercase;color:var(--ink);margin:14px 0 4px}
+  .tag{text-align:center;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-style:italic}
+
+  .rule-orn{display:flex;align-items:center;gap:14px;margin:34px 0;color:var(--rule)}
+  .rule-orn::before,.rule-orn::after{content:"";flex:1;height:1px;background:var(--rule)}
+  .rule-orn span{font-size:14px}
+
+  .fade{opacity:0;transform:translateY(10px);transition:opacity .8s ease,transform .8s ease}
+  .fade.in{opacity:1;transform:translateY(0)}
+
+  .course{text-align:center;margin-bottom:30px}
+  .course .num{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--wine);margin-bottom:8px}
+  .course h3{font-size:22px;font-weight:500;color:var(--ink);letter-spacing:.3px;margin-bottom:6px}
+  .course p{font-size:14.5px;font-style:italic;color:var(--muted)}
+
+  .price-line{text-align:center;margin:44px 0 10px;font-size:15px;color:var(--body)}
+  .price-line b{font-size:26px;color:var(--ink);display:block;margin-bottom:4px;font-weight:500}
+  .price-note{text-align:center;font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:36px}
+
+  .details{font-size:13.5px;color:var(--muted);text-align:center;line-height:1.9}
+  .details b{color:var(--ink);font-weight:600;font-style:normal}
+
+  .book-btn{display:block;text-align:center;margin:32px auto 0;background:var(--wine);color:var(--paper);padding:15px 0;font-size:13px;letter-spacing:2px;text-transform:uppercase;max-width:280px}
+
+  .footer-note{text-align:center;max-width:640px;margin:0 auto 60px;font-size:12px;color:var(--muted);padding:0 20px}
+
+  @media(max-width:700px){
+    .card{margin:30px 16px 60px;padding:40px 26px}
+    .card::before{inset:6px}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="card">
+  <div class="menu-inner">
+
+    <div class="crest">
+      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="24" stroke="#5c1f26" stroke-width="1"/>
+        <path d="M26 14 L26 38 M18 20 Q26 26 34 20 M18 32 Q26 26 34 32" stroke="#5c1f26" stroke-width="1"/>
+      </svg>
+    </div>
+    <h1 class="name">Cellar &amp; Ember</h1>
+    <p class="tag">One seating nightly — Twelve seats — Portland</p>
+
+    <div class="rule-orn"><span>✦</span></div>
+
+    <div class="course fade">
+      <div class="num">First</div>
+      <h3>Charred Scallop, Brown Butter, Yuzu</h3>
+      <p>Diver scallops, hazelnut, preserved lemon</p>
+    </div>
+    <div class="course fade">
+      <div class="num">Second</div>
+      <h3>Celeriac Custard, Black Truffle</h3>
+      <p>Oregon truffle, aged parmesan, chive oil</p>
+    </div>
+    <div class="course fade">
+      <div class="num">Third</div>
+      <h3>Line-Caught Halibut, Beurre Blanc</h3>
+      <p>Sea beans, fennel pollen, saffron</p>
+    </div>
+    <div class="course fade">
+      <div class="num">Fourth</div>
+      <h3>Dry-Aged Duck, Cherry Gastrique</h3>
+      <p>45-day aged, forgotten grains, duck jus</p>
+    </div>
+    <div class="course fade">
+      <div class="num">Fifth</div>
+      <h3>Aged Comté, Quince, Walnut</h3>
+      <p>Selected by our cheesemonger, this week's find</p>
+    </div>
+    <div class="course fade">
+      <div class="num">Sixth</div>
+      <h3>Brown Sugar Tart, Cultured Cream</h3>
+      <p>Smoked salt, sourdough crumble</p>
+    </div>
+    <div class="course fade">
+      <div class="num">Seventh</div>
+      <h3>Chocolate, Olive Oil, Sea Salt</h3>
+      <p>72% single-origin, Maldon salt</p>
+    </div>
+
+    <div class="rule-orn"><span>✦</span></div>
+
+    <div class="price-line fade">
+      <b>$185 per guest</b>
+      Wine pairing +$85 · Tax and gratuity included
+    </div>
+    <p class="price-note">Menu changes weekly with what's available. This is this week's.</p>
+
+    <p class="details fade">
+      <b>Seatings</b> — Wednesday through Saturday, 7:00pm, one table<br>
+      <b>Reservations</b> — by request, usually 3–5 weeks out<br>
+      <b>Dietary</b> — one substitution per table, tell us when you book
+    </p>
+
+    <a class="book-btn fade" href="mailto:table@cellarandember.com?subject=Reservation%20request">Request a seat →</a>
+
+  </div>
+</div>
+
+<p class="footer-note">Cellar &amp; Ember — 214 NW 11th Ave, Portland, OR — table@cellarandember.com — Demo by Bogdan Carcadea</p>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.2});
+  document.querySelectorAll('.fade').forEach((el,i)=>{ el.style.transitionDelay=(i*0.05)+'s'; io.observe(el); });
+</script>
+
+</body>
+</html>
